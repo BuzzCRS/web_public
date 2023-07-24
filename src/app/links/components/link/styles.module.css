@@ -1,0 +1,20 @@
+/* CSS in JS is currently not supported in server side components
+so let's stick to vanilla CSS for now
+---
+we could use css libraries like tailwind or bootstrap and replace this accordingly
+*/
+
+.listItem {
+  display: flex;
+  flex: 1;
+  border: 5px solid #fff;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.listItem a {
+  color: #fff !important;
+  text-decoration: none !important;
+  font-size: 25px;
+}
