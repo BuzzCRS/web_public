@@ -1,8 +1,7 @@
 import { getClient } from "@/lib/client";
 import { GET_LINKS, GET_PROPERTY } from "./data/queries";
 import Image from "next/image";
-
-export const dynamic = "force-dynamic";
+import styles from "./styles.module.css";
 
 const property_id = 15;
 
@@ -22,23 +21,29 @@ export default async function Links() {
   });
 
   return (
-    <main>
-      <p>{JSON.stringify(propertyRes, null, 2)}</p>
-      <main>
-        <Image
-          src={propertyRes.data.property?.brand_logo_url}
-          width={200}
-          height={200}
-          style={{ borderRadius: "100%" }}
-          alt={propertyRes.data.property?.name}
-        />
+    <div className={styles.canvas}>
+      <main className={styles.wrapper}>
+        <div className={styles.list}>
+          <div className={styles.avatar}>
+            <Image
+              src={propertyRes.data.property?.brand_logo_url}
+              width={200}
+              height={200}
+              layout="responsive"
+              objectFit="cover"
+              className={styles.roundedImage}
+              alt={propertyRes.data.property?.name}
+            />
+          </div>
+          {linksRes.data.links.map((l, index) => (
+            <p key={index}>
+              <span>{l.title}</span>
+              <span>{l.url}</span>
+            </p>
+          ))}
+          <p>{JSON.stringify(propertyRes, null, 2)}</p>
+        </div>
       </main>
-      {linksRes.data.links.map((l, index) => (
-        <p key={index}>
-          <span>{l.title}</span>
-          <span>{l.url}</span>
-        </p>
-      ))}
-    </main>
+    </div>
   );
 }
