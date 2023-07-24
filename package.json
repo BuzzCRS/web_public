@@ -6,6 +6,8 @@
     "dev": "next -p 3002",
     "build": "next build",
     "start": "next start",
+    "config:get": "node cli/config.js --get",
+    "config:set": "node cli/config.js --set",
     "lint": "next lint"
   },
   "dependencies": {
@@ -24,5 +26,8 @@
     "react-dom": "18.2.0",
     "tailwindcss": "3.3.3",
     "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "@aws-sdk/client-s3": "^3.374.0"
   }
 }

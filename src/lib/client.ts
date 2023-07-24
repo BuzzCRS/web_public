@@ -1,7 +1,8 @@
+import { getEnv } from "@/helpers";
 import { ApolloClient, HttpLink, InMemoryCache } from "@apollo/client";
 import { registerApolloClient } from "@apollo/experimental-nextjs-app-support/rsc";
 
-const GRAPHQL_ENDPOINT = process.env.GRAPHQL_API_ENDPOINT;
+const GRAPHQL_ENDPOINT = getEnv("gql_endpoint");
 
 export const { getClient } = registerApolloClient(() => {
   return new ApolloClient({
