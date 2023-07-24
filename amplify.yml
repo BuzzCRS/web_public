@@ -6,7 +6,7 @@ frontend:
         - yarn install
     build:
       commands:
-        - aws s3 cp s3://simplifyy-configs/$ENV/web.env ./.env
+        - aws s3 cp s3://simplifyy-configs/$ENV/web_public.env ./.env
         - if [ "$PREVIEW" -eq true ]; then sed -i 's/dev.api.buzzcrs.com/$PREVIEW_API/' .env; fi
         - yarn run build
     # postBuild:
