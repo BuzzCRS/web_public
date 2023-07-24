@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const GET_LINKS = gql`
-  query getLinks($property_id: Int!) {
-    links(property_id: $property_id) {
+  query getLinks($slug: String) {
+    links(slug: $slug) {
       id
       title
       icon
@@ -10,6 +10,11 @@ export const GET_LINKS = gql`
       is_active
       deleted
       updated_at
+      property {
+        id
+        brand_logo_url
+        brand_color
+      }
     }
   }
 `;

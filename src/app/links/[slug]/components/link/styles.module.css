@@ -5,16 +5,16 @@ we could use css libraries like tailwind or bootstrap and replace this according
 */
 
 .listItem {
+  color: #fff !important;
+  text-decoration: none !important;
+  font-size: 25px;
+}
+
+.listItem li {
   display: flex;
   flex: 1;
   border: 5px solid #fff;
   padding: 20px;
   margin: 10px;
   border-radius: 5px;
-}
-
-.listItem a {
-  color: #fff !important;
-  text-decoration: none !important;
-  font-size: 25px;
 }

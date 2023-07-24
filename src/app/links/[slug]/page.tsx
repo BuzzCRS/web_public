@@ -5,26 +5,25 @@ import styles from "./styles.module.css";
 import { getDynamicStyles } from "./helpers";
 import LinkRow from "./components/link/link";
 
-const property_id = 15;
-
-export default async function Links() {
+export default async function Links({ params }) {
+  const { slug } = params;
   const linksRes = await getClient().query({
     query: GET_LINKS,
     variables: {
-      property_id,
+      slug,
     },
   });
 
   const propertyRes = await getClient().query({
     query: GET_PROPERTY,
     variables: {
-      id: property_id,
+      id: linksRes.data?.links?.[0]?.property?.id,
     },
   });
 
-  const dynamicStyles = getDynamicStyles(
-    propertyRes.data.property?.brand_color
-  );
+  const property = propertyRes?.data?.property ?? {};
+
+  const dynamicStyles = getDynamicStyles(property?.brand_color);
 
   return (
     <div className={styles.canvas} style={dynamicStyles}>
@@ -32,13 +31,13 @@ export default async function Links() {
         <div className={styles.listWrapper}>
           <div className={styles.avatar}>
             <Image
-              src={propertyRes.data.property?.brand_logo_url}
+              src={property?.brand_logo_url}
               width={100}
               height={100}
               layout="responsive"
               objectFit="cover"
               className={styles.roundedImage}
-              alt={propertyRes.data.property?.name}
+              alt={property?.name}
             />
           </div>
           <ul className={styles.list}>

@@ -4,8 +4,13 @@ import styles from "./styles.module.css";
 
 export default async function LinkRow({ title, url }) {
   return (
-    <li className={styles.listItem}>
-      <Link href={url}>{title}</Link>
-    </li>
+    <Link
+      href={url}
+      className={styles.listItem}
+      rel="noreferrer"
+      target="_blank"
+    >
+      <li>{title}</li>
+    </Link>
   );
 }
