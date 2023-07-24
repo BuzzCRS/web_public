@@ -17,6 +17,7 @@ export const GET_LINKS = gql`
 export const GET_PROPERTY = gql`
   query getProperty($id: Int!) {
     property(id: $id) {
+      name
       brand_logo_url
       brand_color
     }
