@@ -18,6 +18,8 @@ we could use css libraries like tailwind or bootstrap and replace this according
   flex: 1;
   justify-content: center;
   padding: 30px 10px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .listWrapper {
@@ -27,6 +29,7 @@ we could use css libraries like tailwind or bootstrap and replace this according
   justify-content: space-between;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
 }
 
 .list {
@@ -34,15 +37,13 @@ we could use css libraries like tailwind or bootstrap and replace this according
   flex: 1;
   width: 100%;
   flex-direction: column;
-  justify-content: top;
-  align-items: left;
   overflow-y: scroll;
   padding: 20px;
 }
 
 .avatar {
-  width: 170px;
-  height: 170px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   overflow: hidden;
   display: flex;
