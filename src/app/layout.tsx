@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 
 const roboto = Roboto({
-  weight: "500",
+  weight: "400",
   subsets: ["latin"],
 });
 

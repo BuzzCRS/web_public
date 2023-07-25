@@ -5,8 +5,9 @@ we could use css libraries like tailwind or bootstrap and replace this according
 */
 
 .canvas {
-  width: 100%;
-  height: 100%;
+  display: flex;
+  flex: 1;
+  justify-content: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -14,16 +15,15 @@ we could use css libraries like tailwind or bootstrap and replace this according
 .wrapper {
   display: flex;
   justify-content: center;
-  padding: 150px;
+  padding: 30px 10px;
 }
 
 .listWrapper {
   display: flex;
-  width: 80%;
+  width: 100%;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  padding: 50px;
 }
 
 .list {
@@ -36,15 +36,15 @@ we could use css libraries like tailwind or bootstrap and replace this according
 }
 
 .avatar {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  background: #fff;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  background: #f3f3f3;
 }
 
 .roundedImage {
