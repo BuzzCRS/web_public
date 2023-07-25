@@ -33,7 +33,6 @@ export const generateGradientColor = (primaryColor) => {
 };
 
 export const getDynamicStyles = (color = "#002a4d") => {
-  console.log({ color });
   const accent = generateGradientColor(color);
 
   return {

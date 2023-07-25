@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const GET_LINKS = gql`
   query getLinks($slug: String) {
-    links(slug: $slug) {
+    _unauthedLinks(slug: $slug) {
       id
       title
       icon
@@ -21,7 +21,7 @@ export const GET_LINKS = gql`
 
 export const GET_PROPERTY = gql`
   query getProperty($id: Int!) {
-    property(id: $id) {
+    _unauthedProperty(id: $id) {
       name
       brand_logo_url
       brand_color

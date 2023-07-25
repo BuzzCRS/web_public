@@ -9,6 +9,9 @@ export const { getClient } = registerApolloClient(() => {
     cache: new InMemoryCache(),
     link: new HttpLink({
       uri: GRAPHQL_ENDPOINT,
+      headers: {
+        "x-public-request": "true", // Set the "x-public-request" header here
+      },
     }),
   });
 });
