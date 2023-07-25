@@ -12,12 +12,16 @@ export const generateGradientColor = (primaryColor) => {
       : null;
   };
 
-  const primaryColorRGB: any = hexToRgb(primaryColor);
+  const primaryColorRGB = hexToRgb(primaryColor);
+
+  if (!primaryColorRGB) {
+    return null; // Invalid input color
+  }
 
   const secondColorRGB = {
-    r: primaryColorRGB.r + 20,
-    g: primaryColorRGB.g - 20,
-    b: primaryColorRGB.b + 20,
+    r: clamp(primaryColorRGB.r + 100, 0, 255),
+    g: clamp(primaryColorRGB.g - 100, 0, 255),
+    b: clamp(primaryColorRGB.b + 100, 0, 255),
   };
 
   const rgbToHex = (r, g, b) =>
@@ -30,6 +34,10 @@ export const generateGradientColor = (primaryColor) => {
       .join("");
 
   return rgbToHex(secondColorRGB.r, secondColorRGB.g, secondColorRGB.b);
+};
+
+const clamp = (value, min, max) => {
+  return Math.min(Math.max(value, min), max);
 };
 
 export const getDynamicStyles = (color = "#002a4d") => {
