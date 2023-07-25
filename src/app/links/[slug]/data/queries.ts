@@ -12,19 +12,10 @@ export const GET_LINKS = gql`
       updated_at
       property {
         id
+        name
         brand_logo_url
         brand_color
       }
-    }
-  }
-`;
-
-export const GET_PROPERTY = gql`
-  query getProperty($id: Int!) {
-    _unauthedProperty(id: $id) {
-      name
-      brand_logo_url
-      brand_color
     }
   }
 `;

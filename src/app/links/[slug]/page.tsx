@@ -1,5 +1,5 @@
 import { getClient } from "@/lib/client";
-import { GET_LINKS, GET_PROPERTY } from "./data/queries";
+import { GET_LINKS } from "./data/queries";
 import Image from "next/image";
 import styles from "./styles.module.css";
 import { getDynamicStyles } from "./helpers";
@@ -19,39 +19,41 @@ export default async function Links({ params }) {
     },
   });
 
-  const links = linksRes._unauthedLinks;
+  const links = linksRes._unauthedLinks || [];
+  const property = links?.length ? links?.[0].property : {};
+  const propertyColor = property?.brand_color;
+  const propertyLogo = property?.brand_logo_url;
+  const propertyName = property?.name;
 
-  const { data: propertyRes } = await getClient().query({
-    query: GET_PROPERTY,
-    variables: {
-      id: links?.[0].property?.id,
-    },
-  });
+  const dynamicStyles = getDynamicStyles(propertyColor);
 
-  const property = propertyRes._unauthedProperty;
-  const dynamicStyles = getDynamicStyles(property?.brand_color);
+  const isEmptyList = !loading && !links.length;
 
   return (
-    <div className={styles.canvas} style={dynamicStyles}>
+    <div className={styles.canvas} style={isEmptyList ? {} : dynamicStyles}>
       <main className={styles.wrapper}>
-        <div className={styles.listWrapper}>
-          <div className={styles.avatar}>
-            <Image
-              src={property?.brand_logo_url}
-              width={100}
-              height={100}
-              layout="responsive"
-              objectFit="cover"
-              className={styles.roundedImage}
-              alt={property?.name}
-            />
+        {isEmptyList ? (
+          <h3>No links have been added yet!</h3>
+        ) : (
+          <div className={styles.listWrapper}>
+            <div className={styles.avatar}>
+              <Image
+                src={propertyLogo}
+                width={100}
+                height={200}
+                layout="responsive"
+                objectFit="cover"
+                className={styles.roundedImage}
+                alt={propertyName}
+              />
+            </div>
+            <ul className={styles.list}>
+              {links.map((l, index) => (
+                <LinkRow key={index} url={l.url} title={l.title} />
+              ))}
+            </ul>
           </div>
-          <ul className={styles.list}>
-            {links.map((l, index) => (
-              <LinkRow key={index} url={l.url} title={l.title} />
-            ))}
-          </ul>
-        </div>
+        )}
       </main>
     </div>
   );

@@ -7,6 +7,7 @@ we could use css libraries like tailwind or bootstrap and replace this according
 .canvas {
   display: flex;
   flex: 1;
+  height: 100%;
   justify-content: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -14,30 +15,34 @@ we could use css libraries like tailwind or bootstrap and replace this according
 }
 .wrapper {
   display: flex;
+  flex: 1;
   justify-content: center;
   padding: 30px 10px;
 }
 
 .listWrapper {
   display: flex;
+  flex: 1;
   width: 100%;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: column;
   align-items: center;
 }
 
 .list {
   display: flex;
+  flex: 1;
   width: 100%;
   flex-direction: column;
-  justify-content: center;
+  justify-content: top;
   align-items: left;
-  padding: 50px;
+  overflow-y: scroll;
+  padding: 20px;
 }
 
 .avatar {
-  width: 150px;
-  height: 150px;
+  width: 170px;
+  height: 170px;
   border-radius: 50%;
   overflow: hidden;
   display: flex;
