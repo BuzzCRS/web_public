@@ -8,34 +8,27 @@ import LinkRow from "./components/link/link";
 export default async function Links({ params }) {
   const { slug } = params;
 
-  let links: Array<any> = [],
-    property: any = {};
+  const {
+    data: linksRes,
+    loading,
+    error,
+  } = await getClient().query({
+    query: GET_LINKS,
+    variables: {
+      slug,
+    },
+  });
 
-  try {
-    const linksRes = await getClient().query({
-      query: GET_LINKS,
-      variables: {
-        slug,
-      },
-    });
+  const links = linksRes._unauthedLinks;
 
-    links = linksRes.data._unauthedLinks;
-  } catch (error) {
-    console.log(error);
-  }
+  const { data: propertyRes } = await getClient().query({
+    query: GET_PROPERTY,
+    variables: {
+      id: links?.[0].property?.id,
+    },
+  });
 
-  try {
-    const propertyRes = await getClient().query({
-      query: GET_PROPERTY,
-      variables: {
-        id: links?.[0].property?.id,
-      },
-    });
-    property = propertyRes.data._unauthedProperty;
-  } catch (error) {
-    console.log(error);
-  }
-
+  const property = propertyRes._unauthedProperty;
   const dynamicStyles = getDynamicStyles(property?.brand_color);
 
   return (
