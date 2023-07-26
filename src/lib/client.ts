@@ -13,5 +13,10 @@ export const { getClient } = registerApolloClient(() => {
         "x-public-request": "true", // Set the "x-public-request" header here
       },
     }),
+    defaultOptions: {
+      query: {
+        fetchPolicy: "no-cache",
+      },
+    },
   });
 });
