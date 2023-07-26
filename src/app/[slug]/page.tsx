@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "./styles.module.css";
 import { getDynamicStyles } from "./helpers";
 import LinkRow from "./components/link/link";
+import type { Metadata } from "next";
 
 export default async function Links({ params }) {
   const { slug } = params;
