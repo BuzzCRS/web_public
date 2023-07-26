@@ -58,7 +58,7 @@ we could use css libraries like tailwind or bootstrap and replace this according
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   background: #f3f3f3;
   object-fit: fill;
 }
