@@ -41,9 +41,10 @@ const clamp = (value, min, max) => {
 };
 
 export const getDynamicStyles = (color = "#002a4d") => {
-  const accent = generateGradientColor(color);
+  // const accent = generateGradientColor(color);
 
   return {
-    background: `linear-gradient(to bottom, ${color}, ${accent})`,
+    // background: `linear-gradient(to bottom, ${color}, ${accent})`,
+    background: `${color}`,
   };
 };

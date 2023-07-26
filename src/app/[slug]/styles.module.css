@@ -41,18 +41,24 @@ we could use css libraries like tailwind or bootstrap and replace this according
   padding: 20px;
 }
 
+.title {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  padding: 15px 25px;
+  border-radius: 20px;
+  font-size: 25px;
+  color: #000;
+}
+
 .avatar {
   width: 150px;
   height: 150px;
-  border-radius: 50%;
+  border-radius: 100%;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
   background: #f3f3f3;
-}
-
-.roundedImage {
-  border-radius: 50%;
+  object-fit: fill;
 }
