@@ -18,7 +18,7 @@ export const GET_PROPERTY = gql`
   query getProperty($path: String!) {
     _unauthedProperty(path: $path) {
       name
-      # brand_logo_url
+      brand_logo_url
       brand_color
     }
   }
