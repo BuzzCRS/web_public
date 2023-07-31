@@ -3,13 +3,12 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 
 const roboto = Roboto({
-  weight: "500",
+  weight: "400",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Property Links",
-  description: "Powered by Buzz",
+  robots: "noindex",
 };
 
 export default function RootLayout({
